@@ -14,25 +14,30 @@ def main():
     # TODO: Update this to be more agnostic
     PRIMER_KEY = "/home/begin/prompt.txt"
 
-    # If we call this with flag, then that's the primer switch
-    # ask_gpt("")
-    # exit(0)
-
-    with open(PRIMER_KEY, "r") as f:
-        key = f.readlines()[0]
-
+    file = open(PRIMER_KEY, "r")
+    lines = file.readlines()
+    if len(lines) > 0:
+        key = lines[0]
+    else:
+        key = ""
     
-        # Also we should add the ability to add another file here:
-        #     and let users choose
-        # TODO: update this path to be more agnostic
-        with open('/home/begin/code/awesome-chatgpt-prompts/prompts.csv', newline='') as csvfile:
-            reader = csv.DictReader(csvfile)
-            for row in reader:
-                if row['act']  == key.strip():
-                    print(row['prompt'])
+    print( f"PRIMER {PRIMER_KEY} | {key}" )
+    # Also we should add the ability to add another file here:
+    #     and let users choose
+    # TODO: update this path to be more agnostic
+    with open('/home/begin/code/awesome-chatgpt-prompts/prompts.csv', newline='') as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            # print(row['prompt'])
 
-                    primer = row['prompt']
-                    ask_gpt(primer)
+            # TODO: Add a warning if the prompt is not found
+            # don't silently fail
+            if row['act']  == key.strip():
+                print(row['prompt'])
+
+                primer = row['prompt']
+                print("About to realllly ask")
+                ask_gpt(primer)
 
 
 def ask_gpt(primer):
@@ -71,4 +76,5 @@ def ask_gpt(primer):
             f.write(f"{result}")
 
 if __name__ == "__main__":
+    print("About to ask GPT-4")
     main()
