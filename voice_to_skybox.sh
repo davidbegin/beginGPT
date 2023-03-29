@@ -9,7 +9,8 @@ python $SCRIPT_DIR/openai_scripts/speech_to_text.py
 
 skybox_prompt=$(cat $SCRIPT_DIR/tmp/transcription.txt)
 
-beginbot "Generating Background For Prompt: $skybox_prompt"
+beginbot "Generating Background For Prompt"
+# beginbot "Generating Background For Prompt: $skybox_prompt"
 
 # Send transcribed request to Skybox to generate
 # This also generates HTML to be shown in OBS
@@ -17,4 +18,5 @@ $SCRIPT_DIR/skybox_generator/skybox_generator -prompt_file $SCRIPT_DIR/tmp/trans
 
 # Print to Twitch Chat to Reload the page
 # This is not working for some reason
-beginbot "Reload Page! $skybox_prompt"
+beginbot "Reload Page!"
+# beginbot "Reload Page! $skybox_prompt"
