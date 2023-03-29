@@ -18,4 +18,4 @@ python $SCRIPT_DIR/openai_scripts/ask_gpt4.py
 # Which actually sends it to Uberduck
 # (It's a Hack!)
 echo $(cat $SCRIPT_DIR/tmp/chatgpt_response.txt)
-beginbot $(cat $SCRIPT_DIR/tmp/chatgpt_response.txt)
+# beginbot $(cat $SCRIPT_DIR/tmp/chatgpt_response.txt)

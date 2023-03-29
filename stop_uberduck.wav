@@ -22,5 +22,5 @@ else
 fi
 
 # # This works always
-# ps -ef | grep uberduck.wav | grep -v grep | awk '{print $2}' | xargs kill -9
-ps -ef | grep .wav | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep uberduck.wav | grep -v grep | awk '{print $2}' | xargs kill -9
+# ps -ef | grep .wav | grep -v grep | awk '{print $2}' | xargs kill -9
