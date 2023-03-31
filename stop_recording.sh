@@ -22,4 +22,4 @@ else
 fi
 
 # # This works always
-# ps -ef | grep outfile.wav | grep -v grep | awk '{print $2}' | xargs kill -9
+ps -ef | grep outfile.wav | grep -v grep | awk '{print $2}' | xargs kill -9
