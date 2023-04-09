@@ -1,11 +1,5 @@
 #!/bin/sh
 
-# ./animate 
-
-
-# This should take in Voice
-# take in voicefile
-# # That will fix problems
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
 VOICE_FILE="$1"
