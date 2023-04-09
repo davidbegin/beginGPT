@@ -14,7 +14,7 @@ LOG_FILE=$SCRIPT_DIR/../tmp/animation.log
 TMP_ANIMATIONS_FOLDER=$SCRIPT_DIR/../tmp/animations/$NAMESPACE
 
 MOV_FILE=$(echo $VOICE_FILE | sed "s/.wav/.mov/")
-SOUND_FILE="$SCRIPT_DIR"/../tmp/"$VOICE_FILE"
+SOUND_FILE="$SCRIPT_DIR"/../tmp/voices/"$VOICE_FILE"
 FINAL_VIDEO="$NAMESPACE.mp4"
 
 # Paths: verse1.mov | /home/begin/code/BeginGPT/tmp/verse1.wav | verse1.mp4

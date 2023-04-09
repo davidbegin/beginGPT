@@ -7,8 +7,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 script_path = Path(__file__).resolve()
 parent_dir = script_path.parent.parent
 
-audio_path = parent_dir / "tmp/outfile.wav"
-transcription_path = parent_dir / "tmp/transcription.txt"
+audio_path = parent_dir / "tmp/current/outfile.wav"
+transcription_path = parent_dir / "tmp/current/transcription.txt"
 
 def main():
     audio_file= open(audio_path, "rb")

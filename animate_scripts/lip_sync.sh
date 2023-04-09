@@ -10,7 +10,7 @@ TMP_ANIMATIONS_FOLDER=$SCRIPT_DIR/tmp/animations/$VOICE
 
 echo "Generating Lip Sync Data: $1"
 
-SOUNDFILE="$SCRIPT_DIR"/tmp/"$VOICE_FILE"
+SOUNDFILE="$SCRIPT_DIR"/tmp/voices/"$VOICE_FILE"
 
 OUTPUT=$TMP_ANIMATIONS_FOLDER/output.txt
 

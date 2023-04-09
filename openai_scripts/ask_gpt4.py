@@ -5,6 +5,9 @@ import json
 from pathlib import Path
 import csv
 
+# TODO: Extract out finding transcriptions and recording paths
+# transcription_path = base_path / "tmp/current/transcription.txt"
+
 MODEL = "gpt-4"
 
 script_path = Path(__file__).resolve()
@@ -42,8 +45,8 @@ def main():
 
 def ask_gpt(primer):
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    response_path = base_path / "tmp/chatgpt_response.txt"
-    transcription_path = base_path / "tmp/transcription.txt"
+    response_path = base_path / "tmp/current/chatgpt_response.txt"
+    transcription_path = base_path / "tmp/current/transcription.txt"
 
     # So we need to read in the Primer Base
     # then read in the info
@@ -70,7 +73,8 @@ def ask_gpt(primer):
         # Save the Raw response
         now = datetime.datetime.now()
         timestamp = now.strftime("%Y_%m_%d-%H_%M_%S")
-        filename = base_path / f"gpt_responses/{timestamp}-{MODEL}.json"
+
+        filename = base_path / f"tmp/gpt_responses/{timestamp}-{MODEL}.json"
 
         with open(filename, "w") as f:
             f.write(f"{result}")

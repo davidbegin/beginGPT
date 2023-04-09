@@ -15,8 +15,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 base_path = os.path.dirname(os.path.realpath(__file__))
 
-transcription_path = base_path + "/tmp/transcription.txt"
-response_path = base_path +"/tmp/chatgpt_response.txt"
+transcription_path = base_path + "/tmp/current/transcription.txt"
+response_path = base_path +"/tmp/current/chatgpt_response.txt"
 
 # transcription_path = os.path.dirname(os.path.realpath(__file__))+"/tmp/transcription.txt"
 # response_path = os.path.dirname(os.path.realpath(__file__))+"/tmp/chatgpt_response.txt"
