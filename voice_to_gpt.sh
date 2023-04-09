@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-$SCRIPT_DIR/stop_recording.sh
+$SCRIPT_DIR/audio_scripts/stop_recording.sh
 
 # Convert Audio-to-Text
 # Online

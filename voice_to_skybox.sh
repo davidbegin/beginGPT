@@ -2,7 +2,7 @@
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-$SCRIPT_DIR/stop_recording.sh
+$SCRIPT_DIR/audio_scripts/stop_recording.sh
 
 # Convert Audio-to-Text
 python $SCRIPT_DIR/openai_scripts/speech_to_text.py
@@ -13,7 +13,7 @@ beginbot "Generating Background For Prompt"
 
 # Send transcribed request to Skybox to generate
 # This also generates HTML to be shown in OBS
-$SCRIPT_DIR/skybox_generator/skybox_generator -prompt_file $SCRIPT_DIR/tmp/transcription.txt
+$SCRIPT_DIR/GoBeginGPT/skybox_generator -prompt_file $SCRIPT_DIR/tmp/transcription.txt
 
 # Print to Twitch Chat to Reload the page
 beginbot "Reload Page!"

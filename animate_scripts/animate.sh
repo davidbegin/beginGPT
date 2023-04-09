@@ -10,11 +10,11 @@ NAMESPACE="$3"
 echo "Generating Animation for: $VOICE_FILE | $DIALOGUE_FILE | $NAMESPACE"
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-LOG_FILE=$SCRIPT_DIR/tmp/animation.log
-TMP_ANIMATIONS_FOLDER=$SCRIPT_DIR/tmp/animations/$NAMESPACE
+LOG_FILE=$SCRIPT_DIR/../tmp/animation.log
+TMP_ANIMATIONS_FOLDER=$SCRIPT_DIR/../tmp/animations/$NAMESPACE
 
 MOV_FILE=$(echo $VOICE_FILE | sed "s/.wav/.mov/")
-SOUND_FILE="$SCRIPT_DIR"/tmp/"$VOICE_FILE"
+SOUND_FILE="$SCRIPT_DIR"/../tmp/"$VOICE_FILE"
 FINAL_VIDEO="$NAMESPACE.mp4"
 
 # Paths: verse1.mov | /home/begin/code/BeginGPT/tmp/verse1.wav | verse1.mp4
@@ -63,7 +63,7 @@ ffmpeg -y \
   -i $SOUND_FILE                             \
   -map 1:0                                   \
   -map 0:0                                   \
-  $SCRIPT_DIR/skybox_generator/static/media/$FINAL_VIDEO
+  $SCRIPT_DIR/GoBeginGPT/static/media/$FINAL_VIDEO
 echo "Finishing FFMPEG 2" >> $LOG_FILE
 
 # Delete all previous output mouth files
