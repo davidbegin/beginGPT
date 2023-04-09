@@ -1,3 +1,6 @@
 [submodule "skybox_generator"]
 	path = skybox_generator
 	url = git@github.com:davidbegin/skybox_generator.git
+[submodule "GoBeginGPT"]
+	path = GoBeginGPT
+	url = git@github.com:davidbegin/GoBeginGPT.git
