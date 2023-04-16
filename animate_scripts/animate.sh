@@ -63,7 +63,7 @@ ffmpeg -y \
   -i $SOUND_FILE                             \
   -map 1:0                                   \
   -map 0:0                                   \
-  $SCRIPT_DIR/GoBeginGPT/static/media/$FINAL_VIDEO
+  $SCRIPT_DIR/../GoBeginGPT/static/media/$FINAL_VIDEO
 echo "Finishing FFMPEG 2" >> $LOG_FILE
 
 # Delete all previous output mouth files

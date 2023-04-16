@@ -1,0 +1,3 @@
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse1.mp4'
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse2.mp4'
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse3.mp4'
