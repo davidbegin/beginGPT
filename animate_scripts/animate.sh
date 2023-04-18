@@ -10,14 +10,15 @@ NAMESPACE="$3"
 echo "Generating Animation for: $VOICE_FILE | $DIALOGUE_FILE | $NAMESPACE"
 
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-LOG_FILE=$SCRIPT_DIR/../tmp/animation.log
-TMP_ANIMATIONS_FOLDER=$SCRIPT_DIR/../tmp/animations/$NAMESPACE
+PARENT_DIR="$( cd "${SCRIPT_DIR}/.." && pwd )"
+LOG_FILE=$PARENT_DIR/tmp/animation.log
+TMP_ANIMATIONS_FOLDER=$PARENT_DIR/tmp/animations/$NAMESPACE
 
-MOV_FILE=$(echo $VOICE_FILE | sed "s/.wav/.mov/")
-SOUND_FILE="$SCRIPT_DIR"/../tmp/voices/"$VOICE_FILE"
-FINAL_VIDEO="$NAMESPACE.mp4"
+MOV_FILE="${VOICE_FILE}.mov"
+# MOV_FILE=$(echo $VOICE_FILE | sed "s/.wav/.mov/")
+SOUND_FILE="${PARENT_DIR}/tmp/voices/${NAMESPACE}/${VOICE_FILE}.wav"
+FINAL_VIDEO="${NAMESPACE}.mp4"
 
-# Paths: verse1.mov | /home/begin/code/BeginGPT/tmp/verse1.wav | verse1.mp4
 echo "Paths: $MOV_FILE | $SOUND_FILE | $FINAL_VIDEO"
 
 echo $TMP_ANIMATIONS_FOLDER
@@ -26,7 +27,8 @@ mkdir -p $TMP_ANIMATIONS_FOLDER
 
 echo "Starting Lip Sync" >> $LOG_FILE
 
-$SCRIPT_DIR/lip_sync.sh $VOICE_FILE $DIALOGUE_FILE
+echo "$SCRIPT_DIR/lip_sync.sh $VOICE_FILE $DIALOGUE_FILE $NAMESPACE"
+# $SCRIPT_DIR/lip_sync.sh $VOICE_FILE $DIALOGUE_FILE $NAMESPACE
 
 echo "Finished Lip Sync" >> $LOG_FILE
 
@@ -46,15 +48,12 @@ chmod +x $TMP_ANIMATIONS_FOLDER/output.sh
 
 $TMP_ANIMATIONS_FOLDER/output.sh
 
-
-
-echo "STARTING FFMPEG 1" >> $LOG_FILE
-ffmpeg -y -framerate 24                     \
-  -i $TMP_ANIMATIONS_FOLDER/output_%05d.png \
-  -vcodec png                               \
-  $TMP_ANIMATIONS_FOLDER/$MOV_FILE
-echo "Finished FFMPEG 1" >> $LOG_FILE
-
+# echo "STARTING FFMPEG 1" >> $LOG_FILE
+# ffmpeg -y -framerate 24                     \
+#   -i $TMP_ANIMATIONS_FOLDER/output_%05d.png \
+#   -vcodec png                               \
+#   $TMP_ANIMATIONS_FOLDER/$MOV_FILE
+# echo "Finished FFMPEG 1" >> $LOG_FILE
 
 
 echo "STARTING FFMPEG 2" >> $LOG_FILE
@@ -63,7 +62,7 @@ ffmpeg -y \
   -i $SOUND_FILE                             \
   -map 1:0                                   \
   -map 0:0                                   \
-  $SCRIPT_DIR/../GoBeginGPT/static/media/$FINAL_VIDEO
+  $PARENT_DIR/GoBeginGPT/static/media/$FINAL_VIDEO
 echo "Finishing FFMPEG 2" >> $LOG_FILE
 
 # Delete all previous output mouth files
