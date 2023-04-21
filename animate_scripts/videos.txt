@@ -1,3 +1,3 @@
- file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse_0.mp4'
- file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse_1.mp4'
- file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/verse_2.mp4'
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/snoop-dogg_0.mp4'
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/2pac_1.mp4'
+ file '/home/begin/code/BeginGPT/GoBeginGPT/static/media/snoop-dogg_2.mp4'
