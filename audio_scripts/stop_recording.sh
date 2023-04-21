@@ -1,5 +1,8 @@
 #!/bin/sh
 
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+
+## Explore using Trapt instead
 # Should we extract out the outfile.wav name???
 
 # So we don't cut off the end of the recording
@@ -23,3 +26,5 @@ fi
 
 # # This works always
 ps -ef | grep outfile.wav | grep -v grep | awk '{print $2}' | xargs kill -9
+
+$SCRIPT_DIR/transcribe_recording.sh

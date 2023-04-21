@@ -1,7 +1,5 @@
 # BeginGPT
 
-## WHAT ARE WE DOING
-
 A collection of scripts and code for interacting with AI in various ways.
 
 It's being used heavily on beginbot's Twitch stream right now, and is very likely to change a lot.
