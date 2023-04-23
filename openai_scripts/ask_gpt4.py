@@ -1,64 +1,53 @@
 import os
+import sys
 import datetime
-import openai
 import json
 from pathlib import Path
 import csv
 
-# TODO: Extract out finding transcriptions and recording paths
-# transcription_path = base_path / "tmp/current/transcription.txt"
+import click
+import openai
 
-MODEL = "gpt-4"
+# MODEL = "gpt-4"
+MODEL = "gpt-3.5-turbo"
 
 script_path = Path(__file__).resolve()
 base_path = script_path.parent.parent
 
-def main():
-    # TODO: Update this to be more agnostic
-    PRIMER_KEY = "/home/begin/prompt.txt"
+prompts_file = '/home/begin/code/awesome-chatgpt-prompts/prompts.csv'
 
-    file = open(PRIMER_KEY, "r")
-    lines = file.readlines()
-    if len(lines) > 0:
-        key = lines[0]
-    else:
-        key = ""
-    
-    print( f"PRIMER {PRIMER_KEY} | {key}" )
-    # Also we should add the ability to add another file here:
-    #     and let users choose
-    # TODO: update this path to be more agnostic
-    with open('/home/begin/code/awesome-chatgpt-prompts/prompts.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            # print(row['prompt'])
+default_sys_prompt_path = "/home/begin/prompt.txt"
 
-            # TODO: Add a warning if the prompt is not found
-            # don't silently fail
-            if row['act']  == key.strip():
-                print(row['prompt'])
-
-                primer = row['prompt']
-                print("About to realllly ask")
-                ask_gpt(primer)
+def find_system_prompt(sys_prompt_path):
+    with open(sys_prompt_path, "r") as f:
+        system_prompt = f.read()
+        return system_prompt
 
 
-def ask_gpt(primer):
+@click.command()
+@click.option('--sys_prompt_path', default=default_sys_prompt_path, help='Where to save the GPT response.')
+@click.option('--prompt_file', default="transcription.txt", help='Where to save the GPT response.')
+@click.option('--outfile', default="chatgpt_response.txt", help='Where to save the GPT response.')
+def main(sys_prompt_path, prompt_file, outfile):
+    sys_prompt = find_system_prompt(sys_prompt_path)
+    ask_gpt(sys_prompt, prompt_file, outfile)
+
+
+def ask_gpt(sys_prompt, prompt_file, outfile):
     openai.api_key = os.getenv("OPENAI_API_KEY")
-    response_path = base_path / "tmp/current/chatgpt_response.txt"
+    response_path = base_path / f"tmp/current/{outfile}"
     transcription_path = base_path / "tmp/current/transcription.txt"
 
-    # So we need to read in the Primer Base
-    # then read in the info
     with open(transcription_path, "r") as f:
         question = f.read()
 
         print(f"Asking ChatGPT: {question}\n")
+
         result = openai.ChatCompletion.create(
                 model = MODEL,
                 messages = [{
                     "role": "system",
-                    "content": primer
+                    "content": sys_prompt
                     }, {
                     "role": "user",
                     "content": question 
@@ -78,6 +67,9 @@ def ask_gpt(primer):
 
         with open(filename, "w") as f:
             f.write(f"{result}")
+
+
+content = "This is a test of some stuff"
 
 if __name__ == "__main__":
     print("About to ask GPT-4")

@@ -39,4 +39,6 @@ def main():
         ], check=True)
 
 if __name__ == "__main__":
+    # where to save outfile
+    # where is the infile
     main()

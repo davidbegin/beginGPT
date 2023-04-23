@@ -1,0 +1,9 @@
+I want you write my lyrics for a rap song:
+
+The song structure will be:
+Verse 1 by Snoop Dogg
+Verse 2 by Tupuc
+Verse 3 by Snoop Dogg
+
+The lyrics should be in the style of each rapper, only mixed with the over-all songs subject.
+There should be an indication to who is about to Rap in the Lyrics. 
